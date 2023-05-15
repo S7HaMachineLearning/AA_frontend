@@ -1,0 +1,7 @@
+{
+  "name": "AA-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
