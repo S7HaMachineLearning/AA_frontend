@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, Query } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { catchError, tap } from 'rxjs';
 import { Sensor, SensorType } from 'src/app/models/sensor-dto';
@@ -13,13 +14,15 @@ import { ApiService } from 'src/app/services/api/api.service';
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
     IonicModule
   ]
 })
 export class SensorListComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private route: Router
+  ) { }
 
   sensorList: Sensor[] = [];
   sensorTypes = SensorType;
@@ -40,5 +43,7 @@ export class SensorListComponent implements OnInit {
       ).subscribe();
   }
 
-
+  addSensor() {
+    this.route.navigateByUrl('/sensor/add');
+  }
 }

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Add sensors </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Configured sensors</h1>
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let sensor of results">
+      <ion-label class="sensor ion-activatable ripple-parent rectangle" (click)="clickSensor(sensor)">
+        <h1> {{ sensor.friendlyName }}</h1>
+        <h2> {{ sensor.entityId }}</h2>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-label> 
+    </ion-item>
+  </ion-list>
+
+</ion-content>
