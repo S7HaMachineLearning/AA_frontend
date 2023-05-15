@@ -1,3 +1,24 @@
-<p>
-  sensor-list works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Sensors </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Configured sensors</h1>
+  <ion-list>
+    <ion-item *ngFor="let sensor of sensorList; let i = index">
+      <ion-label>
+        <h1>{{ sensor.friendlyName }} </h1>
+        <h2>{{ sensorTypes[sensor.type] | titlecase }}</h2>
+        <p>id: {{ sensor.id }} - {{ sensor.haSensorId }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

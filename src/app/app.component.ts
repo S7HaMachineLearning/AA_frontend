@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { SensorModule } from './pages/sensor/sensor.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
