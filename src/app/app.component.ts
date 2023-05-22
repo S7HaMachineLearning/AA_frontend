@@ -20,8 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Home', url: '/', icon: 'mail' },
-    { title: 'Sensors', url: '/sensor', icon: 'paper-plane' },
+    { title: 'Home', url: '/', icon: 'home' },
+    { title: 'Sensors', url: '/sensor', icon: 'thermometer' },
   ];
 
   constructor() { }
