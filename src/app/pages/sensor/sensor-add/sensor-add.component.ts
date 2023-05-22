@@ -63,12 +63,14 @@ export class SensorAddComponent implements OnInit {
       .pipe(
         tap((x: any) => {
           if (x != 0) {
-            this.presentToast();
+            this.presentToast('Sensor added successfully');
             this.route.navigateByUrl('/sensor');
           }
         }),
         catchError(async (err) => {
-          console.warn(err);
+          if (err.status == 409) {
+            this.presentToast('Sensor already exists', 'danger');
+          };
         })
       ).subscribe();
   }
@@ -108,12 +110,12 @@ export class SensorAddComponent implements OnInit {
     await alert.present();
   }
 
-  async presentToast() {
+  async presentToast(message: string, color: string = 'success') {
     const toast = await this.toastController.create({
-      message: 'Sensor added!',
-      duration: 1500,
+      message,
+      duration: 2000,
       position: 'bottom',
-      color: 'success'
+      color
     });
 
     await toast.present();

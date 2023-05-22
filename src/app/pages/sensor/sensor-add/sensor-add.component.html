@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title> Add sensors </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +17,7 @@
         <h1> {{ sensor.friendlyName }}</h1>
         <h2> {{ sensor.entityId }}</h2>
         <ion-ripple-effect></ion-ripple-effect>
-      </ion-label> 
+      </ion-label>
     </ion-item>
   </ion-list>
 
