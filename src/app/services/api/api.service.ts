@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { Sensor, newSensor } from 'src/app/models/sensor-dto';
 import { HaSensor } from 'src/app/models/ha-sensor-dta';
 
 const HTTP_HEADERS = {
   headers: {
-    'content-type': 'application/json',
+    'content-type': 'application/json'
   }
 };
 
@@ -47,11 +47,22 @@ export class ApiService {
       sensor,
       HTTP_HEADERS
     ).pipe(
-      tap((x: any) => {
-        console.warn(x);
+      catchError(async (err) => {
+        console.warn('saveSensor', err);
       })
     );
+  }
 
+  deleteSensor(id: any): Observable<void> {
+    console.log('deleteSensor', id);
+    return this.http.delete<void>(
+      `${this.url}/sensors/${id}`,
+      HTTP_HEADERS
+    ).pipe(
+      catchError(async (err) => {
+        console.warn('deleteSensor', err);
+      })
+    );
   }
 
   /**
