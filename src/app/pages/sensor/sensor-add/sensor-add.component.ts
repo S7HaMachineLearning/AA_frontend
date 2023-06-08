@@ -62,9 +62,11 @@ export class SensorAddComponent implements OnInit {
     this.apiService.saveSensor(sensor)
       .pipe(
         tap((x: any) => {
-          if (x != 0) {
+          if (x != 0 && x != undefined) {
             this.presentToast('Sensor added successfully');
             this.route.navigateByUrl('/sensor');
+          }else{
+            this.presentToast('Sensor already exists', 'danger');
           }
         }),
         catchError(async (err) => {
