@@ -14,7 +14,7 @@
         <br/>
         <ion-button 
           class="button"
-          *ngIf="automation.status == 0"  
+          *ngIf="automation.status === 0"  
           size="large"
           (click)="updateStatus(automation)">
           Grade automation
