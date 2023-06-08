@@ -24,3 +24,23 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+
+button.alert-button.alert-button-accepted {
+    background-color: green;
+    color: #000000;
+    font-size: 20px;
+}
+
+button.alert-button.alert-button-good{
+    background-color: orange;
+    color: #000000;
+    font-size: 20px;
+}
+
+button.alert-button.alert-button-bad{
+    background-color: red;
+    color: #000000;
+    font-size: 20px;
+}

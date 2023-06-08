@@ -22,6 +22,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/', icon: 'home' },
     { title: 'Sensors', url: '/sensor', icon: 'thermometer' },
+    { title: 'Automation', url: '/automation', icon: 'build'}
   ];
 
   constructor() { }

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Automation's </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>New sensors</h1>
+  <ion-list>
+    <ion-item *ngFor="let automation of automationList; let i = index">
+      <ion-label class="ion-activatable ripple-parent rectangle">
+        <h1>{{ automation.id }} | {{ getStatusName(automation.status)}}</h1> 
+        <textarea class="automation" rows="20" disabled>{{ automation.value }}</textarea>
+        <br/>
+        <ion-button 
+          class="button"
+          *ngIf="automation.status == 0"  
+          size="large"
+          (click)="updateStatus(automation)">
+          Grade automation
+          <ion-icon slot="end" name="star"></ion-icon>
+        </ion-button>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

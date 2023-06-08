@@ -9,6 +9,10 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/sensor/sensor.module').then(m => m.SensorModule),
   },
   {
+    path: 'automation',
+    loadChildren: () => import('./pages/automation/automation.module').then(m => m.AutomationModule),
+  },
+  {
     path: '',
     component: HomeComponent,
     pathMatch: 'full',

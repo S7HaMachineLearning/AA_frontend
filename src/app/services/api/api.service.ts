@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, tap } from 'rxjs';
 import { Sensor, newSensor } from 'src/app/models/sensor-dto';
-import { HaSensor } from 'src/app/models/ha-sensor-dta';
+import { HaSensor } from 'src/app/models/ha-sensor-dto';
+import { Automation, FeedbackType } from 'src/app/models/automation-dto';
 
 const HTTP_HEADERS = {
   headers: {
@@ -87,4 +88,34 @@ export class ApiService {
     );
   }
 
+  getAutomation(): Observable<Automation[]> {
+    return this.http.get<Automation[]>(
+      `${this.url}/automations`,
+      HTTP_HEADERS
+    ).pipe(
+      map((x: any) => {
+        const automationCount = Object.keys(x).length;
+        let automationList = [];
+        for (let index = 0; index < automationCount; index++) {
+          const sensor = x[index];
+          automationList.push(sensor)
+        }
+        return automationList;
+      })
+    );
+  }
+
+  updateAutomation(automation: Automation, status: FeedbackType): Observable<void> {
+    return this.http.patch<void>(
+      `${this.url}/automations/${automation.id}`,
+      {
+        status: status
+      },
+      HTTP_HEADERS
+    ).pipe(
+      catchError(async (err) => {
+        console.warn('saveAutomation', err);
+      })
+    );
+  }
 }

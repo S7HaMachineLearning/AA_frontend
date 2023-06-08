@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonicModule, ToastController } from '@ionic/angular';
 import { catchError, tap } from 'rxjs';
-import { HaSensor } from 'src/app/models/ha-sensor-dta';
+import { HaSensor } from 'src/app/models/ha-sensor-dto';
 import { Sensor, SensorType, newSensor } from 'src/app/models/sensor-dto';
 import { ApiService } from 'src/app/services/api/api.service';
 
