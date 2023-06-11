@@ -21,7 +21,25 @@ describe('AutomationListComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a title', async () => {
+    const fixture = TestBed.createComponent(AutomationListComponent);
+    fixture.detectChanges();
+    const app = fixture.nativeElement;
+    const title = app.querySelectorAll('ion-title');
+    expect(title.length).toEqual(1);
+    expect(title[0].textContent).toContain('Automation\'s');
+  });
+
+  it('ion-content should have empty ion-list', async () => {
+    const fixture = TestBed.createComponent(AutomationListComponent);
+    fixture.detectChanges();
+    const app = fixture.nativeElement;
+    const ionItem = app.querySelectorAll('ion-item');
+    expect(ionItem.length).toEqual(1);
+    expect(ionItem[0].textContent).toContain('No automation\'s generated');
   });
 });
