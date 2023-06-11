@@ -11,13 +11,8 @@ import { ApiService } from 'src/app/services/api/api.service';
   selector: 'app-sensor-list',
   templateUrl: './sensor-list.component.html',
   styleUrls: ['./sensor-list.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    IonicModule
-  ]
 })
-export class SensorListComponent implements OnInit {
+export class SensorListComponent {
 
   constructor(
     private apiService: ApiService,
@@ -29,7 +24,7 @@ export class SensorListComponent implements OnInit {
   sensorList: Sensor[] = [];
   sensorTypes = SensorType;
 
-  ngOnInit() {
+  ionViewWillEnter(){   
     this.loadSensors();
   }
 
@@ -50,7 +45,6 @@ export class SensorListComponent implements OnInit {
   }
 
   async deleteClick(item: any) {
-    console.warn(item);
     const alert = await this.alertController.create({
       header: 'Delete Sensor?',
       message: `Are you sure you want to delete '${item.friendlyName}'?`,

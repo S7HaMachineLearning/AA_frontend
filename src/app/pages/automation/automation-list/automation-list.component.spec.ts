@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { AutomationListComponent } from './automation-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AutomationListComponent', () => {
   let component: AutomationListComponent;
@@ -9,8 +10,10 @@ describe('AutomationListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AutomationListComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        IonicModule.forRoot(),
+        HttpClientModule
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AutomationListComponent);

@@ -12,12 +12,6 @@ import { ApiService } from 'src/app/services/api/api.service';
   selector: 'app-sensor-add',
   templateUrl: './sensor-add.component.html',
   styleUrls: ['./sensor-add.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    IonicModule,
-
-  ]
 })
 export class SensorAddComponent implements OnInit {
 

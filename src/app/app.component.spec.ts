@@ -6,11 +6,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, IonicModule],
+      imports: [
+        AppComponent,
+        IonicModule,
+        HttpClientModule
+      ],
       providers: [provideRouter([])],
     }).compileComponents();
   });
@@ -26,9 +31,10 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].textContent).toContain('Inbox');
-    expect(menuItems[1].textContent).toContain('Outbox');
+    expect(menuItems.length).toEqual(3);
+    expect(menuItems[0].textContent).toContain('Home');
+    expect(menuItems[1].textContent).toContain('Sensors');
+    expect(menuItems[2].textContent).toContain('Automations');
   });
 
   it('should have urls', async () => {
@@ -36,12 +42,12 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
-    expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual(
-      '/folder/inbox'
-    );
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual(
-      '/folder/outbox'
-    );
+    expect(menuItems.length).toEqual(3);
+    expect(menuItems[0].getAttribute('ng-reflect-router-link'))
+      .toEqual('/');
+    expect(menuItems[1].getAttribute('ng-reflect-router-link'))
+      .toEqual('/sensor');
+    expect(menuItems[2].getAttribute('ng-reflect-router-link'))
+      .toEqual('/automation');
   });
 });
