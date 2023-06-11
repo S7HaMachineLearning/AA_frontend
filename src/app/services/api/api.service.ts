@@ -4,6 +4,7 @@ import { Observable, catchError, map, tap } from 'rxjs';
 import { Sensor, newSensor } from 'src/app/models/sensor-dto';
 import { HaSensor } from 'src/app/models/ha-sensor-dto';
 import { Automation, FeedbackType } from 'src/app/models/automation-dto';
+import { environment } from '../../../environments/environment';
 
 const HTTP_HEADERS = {
   headers: {
@@ -16,8 +17,7 @@ const HTTP_HEADERS = {
 })
 export class ApiService {
 
-  // TODO:: move to environment
-  private url = "http://localhost:8000";
+  private url = environment.api_url ? environment.api_url : 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
