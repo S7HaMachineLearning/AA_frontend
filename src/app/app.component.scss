@@ -117,3 +117,15 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.logo-container {
+  width: 100%;
+
+  .logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 20px;
+  }
+}
