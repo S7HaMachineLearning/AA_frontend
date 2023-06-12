@@ -5,6 +5,7 @@ import { AlertController, IonicModule, ToastController } from '@ionic/angular';
 import { catchError, tap } from 'rxjs';
 import { Automation, FeedbackType } from 'src/app/models/automation-dto';
 import { ApiService } from 'src/app/services/api/api.service';
+import { Clipboard } from '@angular/cdk/clipboard'
 
 @Component({
   selector: 'app-automation-list',
@@ -23,6 +24,7 @@ export class AutomationListComponent implements OnInit {
     private route: Router,
     private alertController: AlertController,
     private toastController: ToastController,
+    private clipboard: Clipboard
   ) { }
 
   automationList: Automation[] = [];
@@ -41,6 +43,10 @@ export class AutomationListComponent implements OnInit {
           console.warn(err);
         })
       ).subscribe();
+  }
+
+  copyToClipboard(automation: Automation) {
+      this.clipboard.copy(automation.value);
   }
 
   async updateStatus(automation: Automation) {
@@ -81,20 +87,18 @@ export class AutomationListComponent implements OnInit {
     });
     await alert.present();
   }
-  saveToDb(automation: Automation, status: FeedbackType) {   
-    console.warn(automation, status);
-     
-   this.apiService.updateAutomation(automation, status).pipe(
+  saveToDb(automation: Automation, status: FeedbackType) {
+    this.apiService.updateAutomation(automation, status).pipe(
       tap(() => {
         this.loadAutomations();
       }),
       catchError(async (err) => {
-        console.warn(err);        
+        console.warn(err);
       })
-   ).subscribe(); 
+    ).subscribe();
   }
 
-  
+
 
   getStatusName(status: number) {
     switch (status) {

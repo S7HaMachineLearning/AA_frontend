@@ -20,6 +20,13 @@
           Grade automation
           <ion-icon slot="end" name="star"></ion-icon>
         </ion-button>
+        <ion-button 
+          class="button"  
+          size="large"
+          (click)="copyToClipboard(automation)">
+          Copy
+          <ion-icon slot="end" name="copy"></ion-icon>
+        </ion-button>
         <ion-ripple-effect></ion-ripple-effect>
       </ion-label>
     </ion-item>
